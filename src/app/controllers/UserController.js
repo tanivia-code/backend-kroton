@@ -31,12 +31,18 @@ class UserController {
   async update(req, res) {
     const {
       email,
-      oldPassword
-    } = req.body
+      oldPassword,
+      password,
+      confirmPassword
+    } = await req.body
+
+    const user = await User.findByPk(req.userID);
 
     return res.status(200).json({
       email,
-      oldPassword
+      oldPassword,
+      password,
+      confirmPassword
     })
   }
 
