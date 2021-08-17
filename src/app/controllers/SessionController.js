@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import User from '../models/User';
-import auth from '../../config/auth';
+import authConfig from '../../config/auth';
 class SessionController{
 
     async store(req, res) {
@@ -12,12 +12,13 @@ class SessionController{
         if (!user) {
             return res.status(401).json({ message: 'Usuário não encontrado' });
         }
-        
+
         if (!(await user.checkPassword(password))) {
             return res.status(401).json({ message: 'Senha é inválida'})
         }
 
         const { id, name, } = user;
+        console.log(authConfig.secret)
 
 
         res.json({ message: 'qualquer coisa'})
