@@ -1,5 +1,8 @@
 {
   "execMap": {
     "js": "sucrase-node"
-  }
+  },
+  “scripts": {
+   "dev": "nodemon src/server.js"
+ }
 }
