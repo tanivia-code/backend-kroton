@@ -21,7 +21,14 @@ class SessionController{
         console.log(authConfig.secret)
 
 
-        res.json({ message: 'qualquer coisa'})
+        res.json({
+            user: {
+                id,
+                name,
+                email,
+            },
+            token: 'este vai ser o token'
+        })
     }
 }
 
