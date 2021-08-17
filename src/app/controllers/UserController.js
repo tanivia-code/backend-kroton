@@ -12,7 +12,7 @@ class UserController {
     if (userExists) {
       return res.status(400).json({
         message: 'Usuário já existe'
-      });
+      })
     }
 
     const {
