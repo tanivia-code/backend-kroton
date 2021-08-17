@@ -6,7 +6,21 @@ class SessionController{
 
     async store(req, res) {
         const { email, password } = req.body;
-        res.json({ message: 'Tudo certo'})
+
+        const user = await User.findOne({ where: { email } });
+
+        if (!user) {
+            return res.status(401).json({ message: 'Usuário não encontrado' });
+        }
+        
+        if (!(await user.checkPassword(password))) {
+            return res.status(401).json({ message: 'Senha é inválida'})
+        }
+
+        const { id, name, } = user;
+
+
+        res.json({ message: 'qualquer coisa'})
     }
 }
 
