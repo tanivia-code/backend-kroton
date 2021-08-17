@@ -28,6 +28,18 @@ class UserController {
     });
   }
 
+  async update(req, res) {
+    const {
+      email,
+      oldPassword
+    } = req.body
+
+    return res.status(200).json({
+      email,
+      oldPassword
+    })
+  }
+
 }
 
 export default new UserController();
