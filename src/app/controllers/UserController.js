@@ -1,3 +1,4 @@
+import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
@@ -36,13 +37,18 @@ class UserController {
       confirmPassword
     } = await req.body
 
+    const {
+      authorization
+    } = await req.headers
+
     const user = await User.findByPk(req.userID);
 
     return res.status(200).json({
       email,
       oldPassword,
       password,
-      confirmPassword
+      confirmPassword,
+      authorization
     })
   }
 
