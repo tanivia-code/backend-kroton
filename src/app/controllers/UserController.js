@@ -37,7 +37,7 @@ class UserController {
     const { email, oldPassword } = await req.body;
 
     const user = await User.findByPk(req.userID);
-    if (email && email !== user.email) {
+    if (email && email !== user.email){
       const userExists = await User.findOne({ where: { email }})
       if (userExists) {
         return res.status(400).json({ error: 'Oops deu ruim'})
