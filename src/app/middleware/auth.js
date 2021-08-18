@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
-import { promisify } from 'util';
+import {
+    promisify
+} from 'util';
 
 import authConfig from '../../config/auth';
 
@@ -20,7 +22,9 @@ export default async (req, res, next) => {
         next();
 
     } catch (err) {
-        return res.status(401).json({message: 'Token inválido'})
+        return res.status(401).json({
+            message: 'Token inválido'
+        })
     }
 
 
