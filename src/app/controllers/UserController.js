@@ -31,17 +31,24 @@ class UserController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({
-        message: 'Falha da validação'
-      })
+      return res.status(400).json({ message: 'Falha da validação' })
     }
 
-    const { email, oldPassword, password, confirmPassword } = await req.body;
-    const { authorization } = await req.headers;
+    const { email, oldPassword } = await req.body;
 
     const user = await User.findByPk(req.userID);
+    if (email && email !== user.email) {
+      const userExists = await User.findOne({ where: { email }})
+      if (userExists) {
+        return res.status(400).json({ error: 'Oops deu ruim'})
+      }
+    }
 
-    return res.status(200).json({ email, oldPassword, password, confirmPassword, authorization });
+    const { authorization } = await req.headers;
+
+   
+
+    return res.status(200).json({user});
   }
 
 }
