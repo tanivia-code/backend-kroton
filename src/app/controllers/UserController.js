@@ -49,7 +49,9 @@ class UserController {
       return res.status(401).json({ message: 'Senha não confere'})
     }
 
-    return res.status(200).json({ message: 'Tudo certo!'});
+    const { id, name } = await user.update(req.body);
+
+    return res.status(200).json({ id, name,});
   }
 
 }
