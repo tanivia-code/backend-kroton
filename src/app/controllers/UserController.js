@@ -46,9 +46,7 @@ class UserController {
 
     const { authorization } = await req.headers;
 
-   
-
-    return res.status(200).json({user});
+    return res.status(200).json(authorization);
   }
 
 }
