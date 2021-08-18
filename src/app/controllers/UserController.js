@@ -25,11 +25,12 @@ class UserController {
     return res.json({
       id,
       name,
-      email,
+      email
     });
   }
 
   async update(req, res) {
+
     const schema = Yup.object().shape({
       name: Yup.string(),
       email: Yup.string().email(),
@@ -39,7 +40,7 @@ class UserController {
       ),
       confirmPassword: Yup.string().when(
         'password', (password, field) => password ? field.required().oneOf([Yup.ref('password')]) : field)
-    })
+    });
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({
@@ -53,7 +54,6 @@ class UserController {
       password,
       confirmPassword
     } = await req.body;
-
     const {
       authorization
     } = await req.headers;
