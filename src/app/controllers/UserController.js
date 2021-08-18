@@ -37,6 +37,7 @@ class UserController {
     const { email, oldPassword } = await req.body;
 
     const user = await User.findByPk(req.userID);
+    
     if (email && email !== user.email){
       const userExists = await User.findOne({ where: { email }})
       if (userExists) {
@@ -44,9 +45,11 @@ class UserController {
       }
     }
 
-    const { authorization } = await req.headers;
+    if ( oldPassword && !(await user.checkPassword(oldPassword))) {
+      return res.status(401).json({ message: 'Senha não confere'})
+    }
 
-    return res.status(200).json(authorization);
+    return res.status(200).json({ message: 'Tudo certo!'});
   }
 
 }
