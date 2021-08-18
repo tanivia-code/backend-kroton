@@ -16,17 +16,9 @@ class UserController {
       })
     }
 
-    const {
-      id,
-      name,
-      email
-    } = await User.create(req.body);
+    const { id, name, email } = await User.create(req.body);
 
-    return res.json({
-      id,
-      name,
-      email
-    });
+    return res.json({ id, name, email });
   }
 
   async update(req, res) {
@@ -48,25 +40,12 @@ class UserController {
       })
     }
 
-    const {
-      email,
-      oldPassword,
-      password,
-      confirmPassword
-    } = await req.body;
-    const {
-      authorization
-    } = await req.headers;
+    const { email, oldPassword, password, confirmPassword } = await req.body;
+    const { authorization } = await req.headers;
 
     const user = await User.findByPk(req.userID);
 
-    return res.status(200).json({
-      email,
-      oldPassword,
-      password,
-      confirmPassword,
-      authorization
-    });
+    return res.status(200).json({ email, oldPassword, password, confirmPassword, authorization });
   }
 
 }
