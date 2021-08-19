@@ -15,20 +15,14 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'users',
-          key: 'id'
-        },
+        references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: true,
       },
-      colaborator_id: {
+      collaborator_id: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'users',
-          key: 'id'
-        },
+        references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: true,
