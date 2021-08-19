@@ -1,6 +1,6 @@
 module.exports = {
   dialect: 'postgres',
-  host: 'chunee.db.elephantsql.com',
+/*   host: 'chunee.db.elephantsql.com', */
   username: 'kbdxcncs',
   password: 'SZRnTi5d3txFQAmOe84HzMl-STIyHLZZ',
   database: 'kbdxcncs',
