@@ -12,9 +12,12 @@ class AppointmentsController {
     }
 
     async store(req, res) {
-        const {
-            name
-        } = req.body;
+
+        const schema = Yup.object().shape({
+            collaborator_id: Yup.number().required(),
+            date: Yup.date().required(),
+        });
+
         return res.status(200).json(name)
     }
 }
