@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 import User from '../app/models/User';
-import Appointment from '../app/models/Appointments';
+import Appointment from '../app/models/Appointment';
 import File from '../app/models/File';
 import databaseConfig from '../config/database';
 
