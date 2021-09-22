@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
+import swaggerUI from 'swagger-ui-express';
 
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
@@ -10,8 +11,12 @@ import NotificationsController from './app/controllers/NotificationsController';
 import authMiddleware from './app/middleware/auth';
 import multerConfig from './config/multer';
 
+import swaggerDocument from '../swagger';
+
 const routes = new Router();
 const uploads = multer(multerConfig);
+
+routes.use('/swagger', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 
 routes.get('/', (req, res) => {
